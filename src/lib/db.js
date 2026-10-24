@@ -111,8 +111,13 @@ export async function entrar(email, senha) {
     avisar(sessaoDemo(user))
     return
   }
-  const { error } = await supabase.auth.signInWithPassword({ email, password: senha })
+  const { error } = await supabase.auth.signInWithPassword({ email: limparEmail(email), password: senha })
   if (error) throw traduzirErro(error)
+}
+
+// Tira espaços e deixa minúsculo (o celular às vezes põe a 1ª letra maiúscula)
+function limparEmail(email) {
+  return (email || '').trim().toLowerCase()
 }
 
 export async function criarConta(nome, email, senha) {
@@ -122,12 +127,25 @@ export async function criarConta(nome, email, senha) {
     avisar(sessaoDemo(user))
     return { precisaConfirmar: false }
   }
+  email = limparEmail(email)
   const { data, error } = await supabase.auth.signUp({
     email, password: senha, options: { data: { nome } },
   })
   if (error) throw traduzirErro(error)
-  // Se a confirmação de e-mail estiver ligada no Supabase, não vem sessão ainda
-  return { precisaConfirmar: !data.session }
+
+  // Se o e-mail já tem conta, o Supabase não dá erro: devolve um usuário
+  // "vazio" (sem identities). Tratamos isso como "e-mail já cadastrado".
+  if (data.user && data.user.identities?.length === 0) {
+    throw new Error('Este e-mail já tem conta. Toque em "Entrar" e use sua senha.')
+  }
+  if (data.session) return { precisaConfirmar: false } // já entrou direto
+
+  // Sem sessão: tenta entrar na hora. Funciona quando a confirmação de
+  // e-mail está desligada; se estiver ligada, avisamos para confirmar.
+  const login = await supabase.auth.signInWithPassword({ email, password: senha })
+  if (!login.error) return { precisaConfirmar: false }
+  if (login.error.code === 'email_not_confirmed') return { precisaConfirmar: true }
+  throw traduzirErro(login.error)
 }
 
 export async function sair() {
@@ -139,14 +157,26 @@ export async function sair() {
   await supabase.auth.signOut()
 }
 
+// Transforma o erro do Supabase numa frase clara. Usa o "code" do erro
+// (um identificador fixo) e, se não tiver, procura palavras na mensagem.
 function traduzirErro(error) {
+  const codigo = error.code || ''
   const m = (error.message || '').toLowerCase()
-  if (m.includes('invalid login')) return new Error('E-mail ou senha incorretos.')
-  if (m.includes('already registered')) return new Error('Este e-mail já tem conta. Tente entrar.')
-  if (m.includes('password')) return new Error('A senha precisa ter pelo menos 6 caracteres.')
-  if (m.includes('email not confirmed')) return new Error('Confirme seu e-mail antes de entrar.')
-  if (m.includes('rate limit')) return new Error('Muitas tentativas. Espere um pouco e tente de novo.')
-  return new Error(error.message || 'Algo deu errado. Tente novamente.')
+  if (codigo === 'invalid_credentials' || m.includes('invalid login'))
+    return new Error('E-mail ou senha incorretos. Se ainda não tem conta, toque em "Criar conta".')
+  if (codigo === 'email_not_confirmed' || m.includes('email not confirmed'))
+    return new Error('Falta confirmar seu e-mail: abra o link que enviamos para sua caixa de entrada (veja também o spam).')
+  if (codigo === 'user_already_exists' || m.includes('already registered'))
+    return new Error('Este e-mail já tem conta. Toque em "Entrar" e use sua senha.')
+  if (codigo === 'over_email_send_rate_limit' || codigo === 'over_request_rate_limit' || m.includes('rate limit') || m.includes('security purposes'))
+    return new Error('Muitas tentativas seguidas. Espere 1 minuto e tente de novo.')
+  if (codigo === 'weak_password' || m.includes('password should'))
+    return new Error('A senha precisa ter pelo menos 6 caracteres.')
+  if (codigo === 'validation_failed' || m.includes('invalid format') || m.includes('email address'))
+    return new Error('Esse e-mail não parece válido. Confira se digitou certo.')
+  if (m.includes('failed to fetch') || m.includes('network'))
+    return new Error('Sem conexão com a internet. Tente de novo.')
+  return new Error('Algo deu errado: ' + (error.message || 'tente novamente.'))
 }
 
 // ---------------------------------------------------------------------

@@ -242,6 +242,9 @@ h1, h2, h3 { font-family: var(--fonte-titulo); color: var(--verde-escuro); margi
 .login-marca h1 { font-size: 44px; font-weight: 900; margin-top: 6px; }
 .login-marca p { color: var(--suave); margin: 4px 0 0; letter-spacing: .3px; }
 .login-form { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.senha { position: relative; }
+.senha input { padding-right: 52px; }
+.senha .icone-btn { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); color: var(--suave); }
 
 /* ---------- Receitas ---------- */
 .receitas { display: flex; flex-direction: column; gap: 12px; }

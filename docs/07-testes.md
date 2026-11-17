@@ -61,5 +61,5 @@ Antes de cada apresentação ou entrega:
 
 | Execução | Data | Responsável (QA) | Resultado |
 |---|---|---|---|
-| 1 | | | |
-| 2 | | | |
+| 1 | | Julia Lopes | |
+| 2 | | Julia Lopes | |

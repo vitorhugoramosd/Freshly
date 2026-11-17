@@ -22,6 +22,7 @@ Entregas da disciplina **Tópicos Avançados em Negócios Digitais**, seguindo a
 * **Tipo:** PWA (instala pelo navegador, sem loja)
 * **Linguagem:** JavaScript (React) · **Banco:** PostgreSQL no Supabase · **Hospedagem:** Vercel
 * **Testes:** `npm test` (17 testes automáticos)
+* **Equipe:** Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos
 
 ## Diagramas
 

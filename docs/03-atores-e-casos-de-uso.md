@@ -55,7 +55,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | FE01: Dados inválidos (nome vazio, e-mail sem "@" ou senha com menos de 6 caracteres).<br>[P1] Sistema: mostra a mensagem do campo com problema.<br>[P2] Sistema: retorna ao P3.<br><br>FE02: E-mail já cadastrado.<br>[P1] Sistema: mostra "Este e-mail já tem conta. Toque em Entrar e use sua senha."<br>[P2] Sistema: retorna ao P3. |
 | **Validações** | [RN01] E-mail único, salvo em minúsculas. [RN02] Senha com no mínimo 6 caracteres. [RN03] Nome obrigatório. |
 | **Protótipo de telas** | [02-criar-conta.png](img/prototipo/02-criar-conta.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC02: Fazer login
@@ -75,7 +75,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | FE01: E-mail ou senha incorretos.<br>[P1] Sistema: mostra "E-mail ou senha incorretos. Se ainda não tem conta, toque em Criar conta."<br>[P2] Sistema: retorna ao P2.<br><br>FE02: Muitas tentativas seguidas.<br>[P1] Sistema: pede para esperar 1 minuto e tentar de novo. |
 | **Validações** | E-mail e senha obrigatórios. O ícone de olho mostra a senha digitada. |
 | **Protótipo de telas** | [01-login.png](img/prototipo/01-login.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC03: Sair da conta
@@ -95,7 +95,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | Não se aplica. |
 | **Validações** | Não se aplica. |
 | **Protótipo de telas** | [10-mais.png](img/prototipo/10-mais.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC04: Cadastrar alimento
@@ -115,7 +115,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | FE01: Campo obrigatório vazio ou inválido.<br>[P1] Sistema: mostra "Dê um nome ao alimento", "Informe a data de validade" ou "A quantidade precisa ser maior que zero".<br>[P2] Sistema: retorna ao P3.<br><br>FE02: Sem conexão.<br>[P1] Sistema: mostra "Não foi possível salvar. Confira sua internet e tente de novo." |
 | **Validações** | [RN04] Nome, quantidade e validade obrigatórios. [RN05] Local entre as 3 opções. [RN06] Preço opcional e não negativo. |
 | **Protótipo de telas** | [06-adicionar-alimento.png](img/prototipo/06-adicionar-alimento.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC05: Editar alimento
@@ -135,7 +135,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | FE01: Igual ao FE01 do UC04. |
 | **Validações** | [RN04, RN05, RN06] |
 | **Protótipo de telas** | [04-acoes-alimento.png](img/prototipo/04-acoes-alimento.png), [06-adicionar-alimento.png](img/prototipo/06-adicionar-alimento.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC06: Excluir alimento
@@ -155,7 +155,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | FE01: Falha ao excluir.<br>[P1] Sistema: mostra "Não foi possível excluir." |
 | **Validações** | Exige confirmação. |
 | **Protótipo de telas** | [06-adicionar-alimento.png](img/prototipo/06-adicionar-alimento.png) (no modo edição) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC07: Consultar o que consumir primeiro
@@ -175,7 +175,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | FE01: Sem conexão.<br>[P1] Sistema: mostra "Não foi possível carregar seus alimentos. Confira sua internet." |
 | **Validações** | [RN08] Só aparecem alimentos com status "ativo". |
 | **Protótipo de telas** | [03-inicio.png](img/prototipo/03-inicio.png), [05-alimentos.png](img/prototipo/05-alimentos.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC08: Buscar alimento
@@ -195,7 +195,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | Não se aplica. |
 | **Validações** | Não se aplica. |
 | **Protótipo de telas** | [03-inicio.png](img/prototipo/03-inicio.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC09: Registrar consumo ou descarte
@@ -215,7 +215,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | FE01: Falha ao salvar.<br>[P1] Sistema: mostra "Não deu para salvar. Tente de novo." |
 | **Validações** | [RN08] |
 | **Protótipo de telas** | [04-acoes-alimento.png](img/prototipo/04-acoes-alimento.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC10: Ativar e receber alertas de validade
@@ -235,7 +235,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | FE01: Permissão negada ou navegador sem suporte.<br>[P1] Sistema: explica como liberar nas configurações ou, no iPhone, pede para instalar o app primeiro. |
 | **Validações** | [RN10] No máximo 1 alerta por dia em cada aparelho. |
 | **Protótipo de telas** | [10-mais.png](img/prototipo/10-mais.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC11: Consultar receitas sugeridas
@@ -255,7 +255,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | Não se aplica. |
 | **Validações** | [RN11] Alimentos vencidos não entram. |
 | **Protótipo de telas** | [07-receitas.png](img/prototipo/07-receitas.png), [08-detalhe-receita.png](img/prototipo/08-detalhe-receita.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC12: Consultar economia do mês
@@ -275,7 +275,7 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | Não se aplica. |
 | **Validações** | [RN13] Alimento sem preço conta como R$ 0. |
 | **Protótipo de telas** | [09-economia.png](img/prototipo/09-economia.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
 
 ### UC13: Instalar o app
@@ -295,5 +295,5 @@ Um caso de uso descreve uma funcionalidade que o sistema oferece para atender ao
 | **Fluxo de exceção** | Não se aplica. |
 | **Validações** | Se o app já estiver instalado, a seção não aparece. |
 | **Protótipo de telas** | [10-mais.png](img/prototipo/10-mais.png) |
-| **Autor(es)** | Equipe Freshly |
+| **Autor(es)** | Christyan Assolini, Isabele Pires, Julia Lopes e Vitor Hugo Ramos |
 | **Data** | 17/11/2026 |
